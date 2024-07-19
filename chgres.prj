@@ -1,0 +1,15 @@
+chgres.prg
+.C[-K-]
+.C[-P-]
+.C[-Iext\purec\include]
+.L[-S=16000]
+=
+ext\purec\lib\cstartv.o
+chgres.c
+popup.c
+inf.c
+res.c
+
+ext\purec\lib\pcgemlib.lib
+ext\purec\lib\pctoslib.lib
+ext\purec\lib\pcstdlib.lib

@@ -1,0 +1,30 @@
+NATIVECC = gcc
+CROSS=m68k-atari-mint-
+CC = $(CROSS)gcc
+
+
+STRIPX = ./ext/stripx/stripx
+STRIP = $(STRIPX) -v -f $(APP)
+
+CFLAGS = -Os -Wall -Wstrict-prototypes -Wmissing-prototypes -W
+
+OBJS = \
+	chgres.o \
+	popup.o \
+	inf.o \
+	hw.o \
+	$(empty)
+
+all: chgres.prg
+
+chgres.prg: $(OBJS) Makefile $(STRIPX)
+	$(CC) $(CFLAGS) -o $@ $(OBJS) -lgem
+	$(STRIPX) -v -f chgres.prg
+
+clean:
+	$(RM) *.o chgres.prg
+	$(RM) $(STRIPX)
+
+$(STRIPX) : $(STRIPX).c
+	$(NATIVECC) $(STRIPX).c -o $(STRIPX)
+
