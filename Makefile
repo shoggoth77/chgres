@@ -32,10 +32,13 @@ $(LIBCMINI)/build/crt0.o :
 	cd $(LIBCMINI) && make
 
 chgres.zip: chgres.prg
-	zip -r ./chgres.zip . -i auto/wdialog.prg chgres.prg chgres.rsc readme.md
+	cp en/chgres.rsc english.rsc
+	cp fr/chgres.rsc french.rsc
+	zip -r ./chgres.zip . -i auto/wdialog.prg chgres.prg english.rsc french.rsc chgres.rsc readme.md
 
 clean:
 	$(RM) *.o *.prg *.zip
+	$(RM) english.rsc french.rsc
 	$(RM) $(STRIPX)
 	cd $(LIBCMINI) && make clean
 
