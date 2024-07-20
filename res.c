@@ -159,7 +159,11 @@ short initres_saga(short* outrez, short* outmode)
 		{ 0x0D, 1024, 768 },		/*   4:3  */
 		{ 0x0E,  720, 576 },		/*   5:4  */
 		{ 0x0F,  848, 480 },
-		{ 0x10,  640, 200 }
+		{ 0x10,  640, 200 },
+		{ 0x11, 1920,1080 },
+		{ 0x12, 1280,1024 },
+		{ 0x13, 1280, 800 },
+		{ 0x14, 1440, 900 }
 	};
 	const short num_saga_resolutions = sizeof(saga_resolutions) / sizeof(saga_resolutions[0]);
 
