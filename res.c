@@ -187,10 +187,6 @@ short initres_saga(short* outrez, short* outmode)
 	}
 #endif
 
-	/* get rid of 15 & 24bpp */
-	saga_depths[4].reg = saga_depths[4].bpp = 0;
-	saga_depths[6].reg = saga_depths[6].bpp = 0;
-
 	/* fVDI driver for SAGA doesn't support less than 16bpp */
 	if (sys_vdi & F_VDI_FVDI)
 		for (i=0; i<4; i++)
