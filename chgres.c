@@ -1128,7 +1128,7 @@ static void setup(void)
 	}
 
 	/* make sure vampire gets saga modes */
-	if ((cpu == 8) || (mch == 6)) {
+	if ((vdo == 3) && (mch == 6)) {
 		vdo = 6;
 	}
 
