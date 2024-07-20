@@ -6,7 +6,7 @@ STRIPX = ./ext/stripx/stripx
 LIBCMINI = ./ext/libcmini
 
 SFLAGS = -m68000
-CFLAGS = -Os -Wall -Wstrict-prototypes -Wmissing-prototypes -W -nostdlib -ffast-math -I$(LIBCMINI)/include
+CFLAGS = -Os -std=gnu99 -Wall -Wstrict-prototypes -Wmissing-prototypes -W -nostdlib -ffast-math -I$(LIBCMINI)/include
 LFLAGS = -L$(LIBCMINI)/build -nodefaultlibs -nostdlib -nostartfiles -lcmini -lgem
 
 OBJS = \
@@ -19,7 +19,7 @@ OBJS = \
 	res.o \
 	$(empty)
 
-all: chgres.prg
+all: chgres.zip
 
 chgres.prg: $(OBJS) Makefile $(STRIPX)
 	$(CC) $(CFLAGS) -o $@ $(OBJS) $(LFLAGS)
@@ -31,12 +31,11 @@ chgres.prg: $(OBJS) Makefile $(STRIPX)
 $(LIBCMINI)/build/crt0.o :
 	cd $(LIBCMINI) && make
 
-clean:
-	$(RM) *.o chgres.prg
-	$(RM) $(STRIPX)
+chgres.zip: chgres.prg
+	zip -r ./chgres.zip . -i auto/wdialog.prg chgres.prg chgres.rsc readme.md
 
-distclean:
-	$(RM) *.o chgres.prg
+clean:
+	$(RM) *.o *.prg *.zip
 	$(RM) $(STRIPX)
 	cd $(LIBCMINI) && make clean
 
