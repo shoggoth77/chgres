@@ -319,7 +319,7 @@ static struct res *sort_restab(struct res *res)
 	
 	count = count_res(res);
 	ret = res;
-	table = (struct res **)Malloc(count * sizeof(*table));
+	table = (struct res **)malloc(count * sizeof(*table));
 	if (table != NULL)
 	{
 		respp = table;
@@ -712,7 +712,7 @@ static void create_vgainf_mode(struct vgainf *inf, struct vgainf_mode *mode, sho
 {
 	struct res *res;
 	
-	res = (struct res *)Malloc(sizeof(*res));
+	res = (struct res *)malloc(sizeof(*res));
 	if (res == NULL)
 		return;
 	res->base.selected = FALSE;
